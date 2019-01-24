@@ -1,7 +1,7 @@
 
 
       
-#Example 3-14. Reading FASTA sequences with one compact function
+#Reading FASTA sequences with one compact function
 def read_FASTA(filename):
       with open(filename) as file:
             return [(part[0].split('|'),
@@ -150,7 +150,7 @@ amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
 codon_table = dict(zip(codons, amino_acids))
 
 
-#Example 3-9
+#RNA to Protein
 def translate(seq):
       peptide=''
       for i in xrange(0, len(seq), 3):
@@ -163,7 +163,7 @@ def translate(seq):
                 
       return peptide
 
-
+#RNA splicing
 def RNA_splice(filename):
       '''This code will take a fasta file with the first sequence being the unspliced RNA,
       and the remaining sequences being the introns, it will remove those introns from the RNA,
@@ -177,18 +177,12 @@ def RNA_splice(filename):
             if i in mRNA:
                   mRNA=mRNA.replace(i,'')
       return translate(mRNA)
-            
-
-def permutation(x):
-      listz=[]
-      for i in range(1,x+1):
-            listz+=[i]
       
       
       
 ##Get ORFS from FASTA with their length, strand, and coordinates
 
-#from Bio import SeqIO
+from Bio import SeqIO
 #record = SeqIO.read("NC_005816.gb","genbank")
 table = 11
 min_pro_len = 100
@@ -365,6 +359,4 @@ def de_novo_assembly(filename):
     return primerwalk2(assemble)
                     
         
-    
-    
-de_novo_assembly('rosalind_grph.txt')
+   
